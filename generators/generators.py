@@ -7,7 +7,7 @@ def filter_by_currency(transactions, currency):
     :return: итератор с отфильтрованными транзакциями
     """
     for transaction in transactions:
-        if transaction['operationAmount']['currency']['code'] == currency:
+        if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
             print(f"Found transaction with currency {currency}")  # Для отладки
 
