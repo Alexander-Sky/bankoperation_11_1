@@ -18,6 +18,10 @@ git clone https://github.com/Alexander-Sky/bankoperation_11_1.git
 poetry install
 poetry shell
 
+# Установите плагин pytest-cov:
+
+poetry add --group dev pytest-cov
+
 ## Зависимости
 
 ### Основные зависимости
