@@ -1,3 +1,10 @@
+import pytest
+from generators.generators import (
+    filter_by_currency,
+    transaction_descriptions,
+    card_number_generator
+)
+
 # Пример фикстуры с тестовыми данными
 @pytest.fixture
 def transactions():
