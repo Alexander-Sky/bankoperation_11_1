@@ -22,3 +22,14 @@ def transaction_descriptions(transactions):
         yield transaction.get('description', 'Нет описания')
 
 
+def card_number_generator(start, stop):
+    """
+    Генерирует номера карт в заданном диапазоне
+
+    :param start: начальное значение
+    :param stop: конечное значение
+    :return: отформатированные номера карт
+    """
+    for number in range(start, stop + 1):
+        formatted = f"{number:016d}"
+        yield f"{formatted[:4]} {formatted[4:8]} {formatted[8:12]} {formatted[12:]}"
