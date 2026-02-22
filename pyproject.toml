@@ -42,3 +42,6 @@ precision = 2
 [tool.poetry.group.dev.dependencies]
 pytest = "^9.0.2"
 coverage = "^7.13.4"
+
+[tool.pytest.ini]
+addopts = "--cov=src --cov-report=html"
