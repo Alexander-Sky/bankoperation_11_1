@@ -12,7 +12,7 @@
 ### Установка проекта
 ```bash
 # Клонирование репозитория
-git clone https://github.com/Alexander-Sky/bankoperation_10.2.git
+git clone https://github.com/Alexander-Sky/bankoperation_11_1.git
 
 # Установка зависимостей через Poetry
 poetry install
@@ -21,26 +21,32 @@ poetry shell
 ## Зависимости
 
 ### Основные зависимости
-* pytest - фреймворк для тестирования
-* pytest-cov - плагин для измерения покрытия
-* coverage - инструмент для анализа покрытия
+- pytest - фреймворк для тестирования
+- pytest-cov - плагин для измерения покрытия
+- coverage - инструмент для анализа покрытия
 
 ### Инструменты разработки
-* flake8 - проверка стиля кода
-* black - форматирование кода
-* isort - сортировка импортов
-* mypy - статическая типизация
+- flake8 - проверка стиля кода
+- black - форматирование кода
+- isort - сортировка импортов
+- mypy - статическая типизация
 
 ## Запуск тестов
 ```bash
-pip install -r requirements.txt
+
+# Запуск всех тестов
 pytest
+
+# Запуск с измерением покрытия
+pytest --cov=src --cov-report=html
 
 ## Использование
 ### Импорт функций
 python
 
 from src.processing import filter_by_state, sort_by_date
+
+from generators.generators import card_number_generator
 
 ## Примеры работы
 ### Пример фильтрации операций
@@ -61,8 +67,7 @@ cancelled_operations = filter_by_state(operations, 'CANCELED')
 
 ### Реализация функций
 
-В модуле processing.py реализованы следующие функции:
-python
+Основные функции обработки
 
 from typing import List, Dict
 
@@ -74,19 +79,27 @@ def sort_by_date(operations: List[Dict], descending: bool = True) -> List[Dict]:
     """Сортировка операций по дате"""
     return sorted(operations, key=lambda x: x['date'], reverse=descending)
 
+## Функций с использованием генераторов
+
+def card_number_generator(start: int, stop: int):
+    """Генератор номеров карт"""
+    for number in range(start, stop + 1):
+        formatted = f"{number:016d}"
+        yield f"{formatted[:4]} {formatted[4:8]} {formatted[8:12]} {formatted[12:]}"
+
+
 ## Тестирование
 
-### Покрытие кода
-**Достигнуто 100% покрытие кода тестами**
+Текущее покрытие: 98%
+Цель: 100% покрытие тестами
 
 ### Запуск тестов с покрытием
 
-pytest
-
-
-## Проверка покрытия
-
+# Генерация HTML-отчета
 pytest --cov=src --cov-report=html
+
+# Просмотр отчета
+open htmlcov/index.html
 
 ## Генерация отчета о покрытии
 
@@ -115,6 +128,7 @@ pytest --cov=src --cov-report=html
     processing.py - функции обработки операций
 
     conftest.py - фикстуры для тестирования
+    
 
 ## Вклад в проект
 
