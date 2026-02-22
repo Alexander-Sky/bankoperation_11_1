@@ -34,7 +34,8 @@ def test_filter_by_currency(transactions):
 
 def test_transaction_descriptions(transactions):
     descriptions = transaction_descriptions(transactions)
-    expected = ["Перевод организации", "Перевод со счета на счет", ...]
+    # Собираем все описания из тестовых данных
+    expected = [transaction['description'] for transaction in transactions]
     assert list(descriptions) == expected
 
 
