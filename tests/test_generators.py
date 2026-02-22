@@ -24,7 +24,17 @@ def test_filter_by_currency(transactions):
     usd_transactions = filter_by_currency(transactions, "USD")
     assert len(list(usd_transactions)) == 3
 
+
 def test_transaction_descriptions(transactions):
     descriptions = transaction_descriptions(transactions)
     expected = ["Перевод организации", "Перевод со счета на счет", ...]
     assert list(descriptions) == expected
+
+
+@pytest.mark.parametrize("start,stop,expected", [
+    (1, 5, ["0000 0000 0000 0001", ..., "0000 0000 0000 0005"]),
+    # Другие тестовые случаи
+])
+def test_card_number_generator(start, stop, expected):
+    result = list(card_number_generator(start, stop))
+    assert result == expected
