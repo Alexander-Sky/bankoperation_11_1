@@ -23,7 +23,36 @@ def transactions():
             "from": "Счет 75106830613657916952",
             "to": "Счет 11776614605963066702"
         },
-        # Добавьте другие тестовые транзакции здесь
+        {
+            "id": 123456789,
+            "state": "EXECUTED",
+            "date": "2023-10-01T12:00:00",
+            "operationAmount": {
+                "amount": "5000.00",
+                "currency": {
+                    "name": "RUB",
+                    "code": "RUB"
+                }
+            },
+            "description": "Перевод со счета на счет",
+            "from": "Счет 12345678901234567890",
+            "to": "Счет 98765432109876543210"
+        },
+        {
+            "id": 987654321,
+            "state": "EXECUTED",
+            "date": "2023-10-02T12:00:00",
+            "operationAmount": {
+                "amount": "1000.00",
+                "currency": {
+                    "name": "USD",
+                    "code": "USD"
+                }
+            },
+            "description": "Перевод физическому лицу",
+            "from": "Счет 11111111111111111111",
+            "to": "Счет 22222222222222222222"
+        }
     ]
 
 def test_filter_by_currency(transactions):
