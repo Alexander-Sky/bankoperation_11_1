@@ -7,7 +7,7 @@ def filter_by_currency(transactions, currency):
     :return: итератор с отфильтрованными транзакциями
     """
     for transaction in transactions:
-        if transaction['operationAmount']['currency']['code'] == currency:
+        if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
 
 
@@ -19,7 +19,7 @@ def transaction_descriptions(transactions):
     :return: итератор с описаниями
     """
     for transaction in transactions:
-        yield transaction.get('description', 'Нет описания')
+        yield transaction.get("description", "Нет описания")
 
 
 def card_number_generator(start, stop):
