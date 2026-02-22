@@ -1,1 +1,45 @@
+# Игнорировать PyCharm файлы
 .idea/
+*.iml
+
+# Игнорировать Python байт-код
+__pycache__/
+*.py[cod]
+
+# Игнорировать виртуальное окружение
+venv/
+.venv/
+env/
+.env
+
+# Игнорировать файлы coverage
+.coverage
+.coverage.*
+htmlcov/
+
+# Игнорировать временные файлы
+*.tmp
+*.bak
+*.swp
+
+# Игнорировать файлы Poetry
+.python-version
+.DS_Store
+
+# Игнорировать файлы сборки
+dist/
+build/
+*.egg-info/
+
+# Игнорировать файлы документации
+_build/
+docs/_build/
+
+# Игнорировать файлы IDE
+*.sublime-project
+*.sublime-workspace
+.vscode/
+
+# Игнорировать файлы логов
+logs/
+*.log
