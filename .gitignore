@@ -15,7 +15,7 @@ env/
 # Игнорировать файлы coverage
 .coverage
 .coverage.*
-htmlcov/
+#htmlcov/
 
 # Игнорировать временные файлы
 *.tmp
