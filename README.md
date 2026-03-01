@@ -1,49 +1,67 @@
 # Банковский виджет операций
-
 ## Описание проекта
+
 Проект представляет собой набор инструментов для обработки банковских операций. Основные функции включают фильтрацию и сортировку операций по различным критериям.
 
 ## Установка
 
-### Требования
-* Python 3.14+
-* Poetry для управления зависимостями
+Требования
+
+    Python 3.14+
+
+    Poetry для управления зависимостями
 
 ### Установка проекта
-```bash
-# Клонирование репозитория
-git clone https://github.com/Alexander-Sky/bankoperation_10.2.git
+bash
 
-# Установка зависимостей через Poetry
+Клонирование репозитория
+git clone https://github.com/Alexander-Sky/bankoperation_11_1.git
+
+## Установка зависимостей через Poetry
+
 poetry install
 poetry shell
 
+## Установите плагин pytest-cov:
+poetry add --group dev pytest-cov
+
 ## Зависимости
-
 ### Основные зависимости
-* pytest - фреймворк для тестирования
-* pytest-cov - плагин для измерения покрытия
-* coverage - инструмент для анализа покрытия
 
-### Инструменты разработки
-* flake8 - проверка стиля кода
-* black - форматирование кода
-* isort - сортировка импортов
-* mypy - статическая типизация
+    pytest - фреймворк для тестирования
 
-## Запуск тестов
-```bash
-pip install -r requirements.txt
+    pytest-cov - плагин для измерения покрытия
+
+    coverage - инструмент для анализа покрытия
+
+## Инструменты разработки
+
+    isort - сортировка импортов
+
+    black - форматирование кода
+
+    flake8 - проверка стиля кода
+
+    mypy - статическая типизация
+
+### Запуск тестов
+bash
+
+Запуск всех тестов
 pytest
 
-## Использование
-### Импорт функций
+Запуск с измерением покрытия
+pytest --cov=src --cov-report=html
+
+### Использование
+Импорт функций
 python
 
 from src.processing import filter_by_state, sort_by_date
+from generators.generators import card_number_generator
 
-## Примеры работы
-### Пример фильтрации операций
+### Примеры работы
+Пример фильтрации операций
 python
 
 operations = [
@@ -53,60 +71,13 @@ operations = [
     {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}
 ]
 
-# Фильтрация по умолчанию (EXECUTED)
+Фильтрация по умолчанию (EXECUTED)
 filtered_operations = filter_by_state(operations)
 
-# Фильтрация по CANCELED
+Фильтрация по CANCELED
 cancelled_operations = filter_by_state(operations, 'CANCELED')
 
-### Реализация функций
-
-В модуле processing.py реализованы следующие функции:
-python
-
-from typing import List, Dict
-
-def filter_by_state(operations: List[Dict], state: str = 'EXECUTED') -> List[Dict]:
-    """Фильтрация операций по состоянию"""
-    return [op for op in operations if op.get('state') == state]
-
-def sort_by_date(operations: List[Dict], descending: bool = True) -> List[Dict]:
-    """Сортировка операций по дате"""
-    return sorted(operations, key=lambda x: x['date'], reverse=descending)
-
-## Тестирование
-
-### Покрытие кода
-**Достигнуто 100% покрытие кода тестами**
-
-### Запуск тестов с покрытием
-
-pytest
-
-
-## Проверка покрытия
-
-pytest --cov=src --cov-report=html
-
-## Генерация отчета о покрытии
-
-После выполнения команды выше:
-
-    В папке htmlcov появится отчет
-
-    Откройте файл htmlcov/index.html для просмотра отчета
-
-### Требования к тестированию
-
-    Покрытие кода тестами не менее 80%
-
-    Все критические ветки кода должны быть протестированы
-
-    Проверка корректности работы всех функций
-
-## Документация
-
-### Основные модули:
+### Основные модули
 
     masks.py - функции маскирования номеров карт и счетов
 
@@ -114,11 +85,26 @@ pytest --cov=src --cov-report=html
 
     processing.py - функции обработки операций
 
+    generators.py - функции генерации данных
+
     conftest.py - фикстуры для тестирования
 
-## Вклад в проект
+### Тестирование
 
-### Для внесения изменений:
+    Текущее покрытие: 98%
+
+    Цель: 100% покрытие тестами
+
+#### Запуск тестов с покрытием
+bash
+
+Генерация HTML-отчета
+pytest --cov=src --cov-report=html
+
+Просмотр отчета
+open htmlcov/index.html
+
+#### Вклад в проект
 
     Создайте новую ветку от develop
 
@@ -127,3 +113,4 @@ pytest --cov=src --cov-report=html
     Создайте Pull Request
 
     Дождитесь ревью
+

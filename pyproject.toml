@@ -3,13 +3,11 @@ name = "bankoperation-11-1"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Alexander Schischkin",email = "schischkin2@yandex.com"}
+    {name = "Alexander Schischkin", email = "schischkin2@yandex.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = [
-]
-
+dependencies = []
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -24,5 +22,36 @@ lint = [
 ]
 dev = [
     "pytest (>=9.0.2,<10.0.0)",
-    "coverage (>=7.13.4,<8.0.0)"
+    "coverage (>=7.13.4,<8.0.0)",
+    "pytest-cov (>=7.0.0,<8.0.0)"
 ]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/venv/*",
+    "*/env/*"
+]
+
+[tool.coverage.report]
+show_missing = true
+precision = 2
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+coverage = "^7.13.4"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 109
+
+# Объединяем настройки pytest в один раздел
+[tool.pytest]
+addopts = ["-v", "--tb=short", "--cov=src", "--cov-report=html"]
+testpaths = ["tests"]
+pythonpath = ["src"]
